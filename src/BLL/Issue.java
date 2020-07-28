@@ -34,8 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Issue.findById", query = "SELECT i FROM Issue i WHERE i.id = :id"),
     @NamedQuery(name = "Issue.findByIssueDate", query = "SELECT i FROM Issue i WHERE i.issueDate = :issueDate"),
     @NamedQuery(name = "Issue.findByDueDate", query = "SELECT i FROM Issue i WHERE i.dueDate = :dueDate"),
-    @NamedQuery(name = "Issue.findByReturnBook", query = "SELECT i FROM Issue i WHERE i.returnBook = :returnBook"),
-    @NamedQuery(name = "Issue.findByDescription", query = "SELECT i FROM Issue i WHERE i.description = :description")})
+   })
 public class Issue implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -51,10 +50,10 @@ public class Issue implements Serializable {
     @Column(name = "dueDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dueDate;
-    @Column(name = "returnBook")
+   /* @Column(name = "returnBook")
     private Short returnBook;
     @Column(name = "description")
-    private String description;
+    private String description; */
     @JoinColumn(name = "bookId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Book bookId;
@@ -98,7 +97,7 @@ public class Issue implements Serializable {
     public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
     }
-
+/*
     public Short getReturnBook() {
         return returnBook;
     }
@@ -114,7 +113,7 @@ public class Issue implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-
+*/
     public Book getBookId() {
         return bookId;
     }

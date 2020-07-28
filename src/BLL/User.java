@@ -48,12 +48,14 @@ public class User implements Serializable {
     @Basic(optional = false)
     @Column(name = "password")
     private String password;
+    /*
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private Collection<Student> studentCollection;
     @JoinColumn(name = "roleId", referencedColumnName = "id")
+    */
     @ManyToOne(optional = false)
     private Role roleId;
-
+    
     public User() {
     }
 
@@ -90,7 +92,7 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
+/*
     @XmlTransient
     public Collection<Student> getStudentCollection() {
         return studentCollection;
@@ -99,7 +101,7 @@ public class User implements Serializable {
     public void setStudentCollection(Collection<Student> studentCollection) {
         this.studentCollection = studentCollection;
     }
-
+*/
     public Role getRoleId() {
         return roleId;
     }

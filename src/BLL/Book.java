@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Book.findById", query = "SELECT b FROM Book b WHERE b.id = :id"),
     @NamedQuery(name = "Book.findByTitle", query = "SELECT b FROM Book b WHERE b.title = :title"),
     @NamedQuery(name = "Book.findByIsbn", query = "SELECT b FROM Book b WHERE b.isbn = :isbn"),
-    @NamedQuery(name = "Book.findByDescription", query = "SELECT b FROM Book b WHERE b.description = :description"),
+    @NamedQuery(name = "Book.findByDescription", query = "SELECT b FROM Book b WHERE b.category = :category"),
     @NamedQuery(name = "Book.findByPublisherYear", query = "SELECT b FROM Book b WHERE b.publisherYear = :publisherYear")})
 public class Book implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -50,8 +50,8 @@ public class Book implements Serializable {
     @Basic(optional = false)
     @Column(name = "ISBN")
     private String isbn;
-    @Column(name = "description")
-    private String description;
+    @Column(name = "category")
+    private String category;
     @Column(name = "publisherYear")
     private Integer publisherYear;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "bookId")
@@ -100,12 +100,12 @@ public class Book implements Serializable {
         this.isbn = isbn;
     }
 
-    public String getDescription() {
-        return description;
+    public String getCategory() {
+        return category;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public Integer getPublisherYear() {
